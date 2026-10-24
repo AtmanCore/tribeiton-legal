@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.tribeiton",
+      "sha256_cert_fingerprints": [
+        "D6:80:EC:E0:8A:29:85:42:0C:43:EB:1D:C2:5A:14:F8:3F:FF:CE:D0:4E:E6:19:C7:26:21:A0:6A:74:B0:96:1B",
+        "78:AE:DA:D1:17:DD:C0:76:3E:8E:14:CE:3F:53:46:7E:3D:E9:ED:74:CE:D8:A0:AA:E7:A7:BC:83:85:5F:F3:32"
+      ]
+    }
+  }
+]

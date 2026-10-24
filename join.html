@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join my tribe</title>
+<meta name="description" content="You're invited to walk together on Tribe-It-On.">
+<meta property="og:title" content="Join my tribe on Tribe-It-On">
+<meta property="og:description" content="Gentle step challenges for family and closest friends. Tap to join.">
+<meta property="og:image" content="https://tribeiton.com/logo.png">
+<meta property="og:url" content="https://tribeiton.com/join">
+<meta name="robots" content="noindex">
+<link rel="icon" href="logo.png">
+<style>
+:root{--bg:#f5ebdd;--card:#f5d9c4;--ink:#231d18;--muted:#5b4f45;--accent:#e07438;--link:#a4471f;--line:#d9c3ad}
+@media (prefers-color-scheme:dark){:root{--bg:#171310;--card:#2a201a;--ink:#f3e9df;--muted:#c8b9ab;--link:#f2a06e;--line:#4a3a2f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:480px;margin:0 auto;padding:32px 16px 48px}
+.card{background:var(--card);border-radius:28px;padding:28px 24px;text-align:center}
+.card img{width:72px;height:72px;border-radius:18px}
+h1{font:700 1.9rem/1.2 Georgia,"Times New Roman",serif;margin:16px 0 8px}
+.card p{color:var(--muted);margin:0}
+.code{font:700 1.6rem/1 ui-monospace,Menlo,monospace;letter-spacing:.15em;margin:20px 0 4px;word-break:break-all}
+.btn{display:block;width:100%;padding:16px;border-radius:999px;border:0;font:600 1.05rem system-ui,sans-serif;text-decoration:none;margin-top:14px;cursor:pointer}
+.primary{background:var(--accent);color:#231d18}
+.secondary{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+ol{padding-left:20px;color:var(--muted)}
+footer{margin-top:32px;font-size:.95rem;text-align:center}
+a{color:var(--link)}
+</style>
+</head>
+<body>
+<main>
+  <section class="card">
+    <img src="logo.png" alt="">
+    <h1>You're invited to a tribe</h1>
+    <p>Walk together, grow together on Tribe-It-On.</p>
+    <div id="has-code" hidden>
+      <div class="code" id="code"></div>
+      <p>Invite code</p>
+      <a class="btn primary" id="open">Open in Tribe-It-On</a>
+      <button class="btn secondary" id="copy" type="button">Copy code</button>
+    </div>
+    <p id="no-code" hidden style="margin-top:16px">This invite link is incomplete. Ask for a new one.</p>
+  </section>
+
+  <h2 style="font-size:1.1rem;margin:28px 0 6px">Don't have the app yet?</h2>
+  <ol>
+    <li>Install Tribe-It-On on your phone (ask the person who invited you for the link while we're in testing).</li>
+    <li>Sign in, then tap <b>Join with an invite</b> and enter the code above.</li>
+  </ol>
+  <p style="color:var(--muted);font-size:.95rem">Invites work for 7 days.</p>
+
+  <footer><a href="/">About Tribe-It-On</a> · <a href="privacy">Privacy</a></footer>
+</main>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var code = (params.get('code') || location.pathname.split('/')[2] || '').trim();
+  if (!code) { document.getElementById('no-code').hidden = false; return; }
+  document.getElementById('has-code').hidden = false;
+  document.getElementById('code').textContent = code;
+  document.getElementById('open').href = 'tribeiton://join/' + encodeURIComponent(code);
+  var copy = document.getElementById('copy');
+  copy.addEventListener('click', function () {
+    navigator.clipboard.writeText(code).then(function () { copy.textContent = 'Copied'; },
+      function () { copy.textContent = code; });
+  });
+})();
+</script>
+</body>
+</html>
