@@ -57,7 +57,7 @@ a{color:var(--link)}
 <script>
 (function () {
   var params = new URLSearchParams(location.search);
-  var code = (params.get('code') || location.pathname.split('/')[2] || '').trim();
+  var code = (params.get('code') || '').trim();
   if (!code) { document.getElementById('no-code').hidden = false; return; }
   document.getElementById('has-code').hidden = false;
   document.getElementById('code').textContent = code;
